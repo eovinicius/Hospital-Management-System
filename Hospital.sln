@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Domain", "Hospital.Domain\Hospital.Domain.csproj", "{87AFBAA3-C244-4AAE-9278-AC0D9C4C067F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Test", "Hospital.Test\Hospital.Test.csproj", "{731B96BE-73DE-4AA2-B8CD-353DC234F6F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital.Application", "Hospital.Application\Hospital.Application.csproj", "{F5794D25-BDDB-48CE-95DC-C3606AF38A2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{87AFBAA3-C244-4AAE-9278-AC0D9C4C067F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87AFBAA3-C244-4AAE-9278-AC0D9C4C067F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87AFBAA3-C244-4AAE-9278-AC0D9C4C067F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87AFBAA3-C244-4AAE-9278-AC0D9C4C067F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{731B96BE-73DE-4AA2-B8CD-353DC234F6F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{731B96BE-73DE-4AA2-B8CD-353DC234F6F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{731B96BE-73DE-4AA2-B8CD-353DC234F6F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{731B96BE-73DE-4AA2-B8CD-353DC234F6F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5794D25-BDDB-48CE-95DC-C3606AF38A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5794D25-BDDB-48CE-95DC-C3606AF38A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5794D25-BDDB-48CE-95DC-C3606AF38A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5794D25-BDDB-48CE-95DC-C3606AF38A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

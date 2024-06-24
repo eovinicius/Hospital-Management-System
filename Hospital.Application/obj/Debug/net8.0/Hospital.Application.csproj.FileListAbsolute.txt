@@ -1,0 +1,11 @@
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\bin\Debug\net8.0\Hospital.Application.deps.json
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.AssemblyInfoInputs.cache
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.AssemblyInfo.cs
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\bin\Debug\net8.0\Hospital.Application.dll
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\bin\Debug\net8.0\Hospital.Application.pdb
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.csproj.CoreCompileInputs.cache
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.dll
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\refint\Hospital.Application.dll
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\Hospital.Application.pdb
+C:\Users\vosantos\Desktop\Hospital-Management-System\Hospital.Application\obj\Debug\net8.0\ref\Hospital.Application.dll
