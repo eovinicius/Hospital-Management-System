@@ -41,7 +41,7 @@ public class Appointment : AggregateRoot
 
     public void AddMedicalReport(string diagnosis, string treatment, string recommendations)
     {
-        if (Status == AppointmentStatus.Finished || Status == AppointmentStatus.Canceled)
+        if (Status != AppointmentStatus.Scheduled)
         {
             throw new InvalidOperationException("Cannot reschedule a finished or canceled appointment");
         }
@@ -50,7 +50,7 @@ public class Appointment : AggregateRoot
 
     public void AddPrescription(string medicine, string dosage, string duration)
     {
-        if (Status == AppointmentStatus.Finished || Status == AppointmentStatus.Canceled)
+        if (Status != AppointmentStatus.Scheduled)
         {
             throw new InvalidOperationException("Cannot reschedule a finished or canceled appointment");
         }
@@ -100,4 +100,7 @@ public class Appointment : AggregateRoot
     {
         FinalPrice = Price * discount;
     }
+
+    // esta em andamento ?
+
 }

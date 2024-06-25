@@ -2,10 +2,10 @@ using Hospital.Domain.Repositories;
 
 namespace Hospital.Domain.AbstractFactory;
 
-public abstract class AbstractFactoryRepository
+public interface AbstractFactoryRepository
 {
-    public abstract IDoctorRepository CreateDoctorRepository();
-    public abstract IPatientRepository CreatePatientRepository();
-    public abstract IAppointmentRespository CreateAppointmentRepository();
-    public abstract IMedicalInsuranceRepository CreateMedicalInsuranceRepository();
+    IDoctorRepository CreateDoctorRepository();
+    IPatientRepository CreatePatientRepository();
+    IAppointmentRespository CreateAppointmentRepository();
+    IMedicalInsuranceRepository CreateMedicalInsuranceRepository();
 }

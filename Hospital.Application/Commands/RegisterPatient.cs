@@ -1,9 +1,8 @@
-
 using Hospital.Application.Dtos.input;
 using Hospital.Domain.Entities;
 using Hospital.Domain.Repositories;
 
-namespace Hospital.Application.UseCases;
+namespace Hospital.Application.Commands;
 
 public class RegisterPatient
 {
@@ -22,7 +21,7 @@ public class RegisterPatient
             throw new InvalidOperationException("Patient already exists");
         }
 
-        var patient = new Patient(input.Name, input.Document, input.Email, input.Phone, input.Address, input.MedicalInsuranceId);
+        var patient = new Patient(input.Name, input.Document, input.DocumentImage, input.Email, input.Phone, input.Address, input.MedicalInsuranceId);
 
         await _pacientRepository.Add(patient);
     }

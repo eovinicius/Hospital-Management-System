@@ -1,7 +1,7 @@
 using Hospital.Application.Dtos.input;
 using Hospital.Domain.Repositories;
 
-namespace Hospital.Application.UseCases;
+namespace Hospital.Application.Commands;
 
 public class RegisterDoctor
 {
