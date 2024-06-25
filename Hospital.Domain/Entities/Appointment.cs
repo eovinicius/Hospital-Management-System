@@ -31,6 +31,11 @@ public class Appointment : AggregateRoot
 
     public static Appointment Create(DateTime date, decimal price, decimal FinalPrice, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
     {
+        if (date <= DateTime.Now)
+        {
+            throw new ArgumentException("Cannot schedule an appointment for a past date.");
+        }
+
         return new Appointment(date, price, FinalPrice, description, patientId, doctorId, medicalInsuranceId);
     }
 

@@ -5,4 +5,5 @@ namespace Hospital.Domain.Repositories;
 
 public interface IDoctorRepository : IRepositoryGeneric<Doctor>
 {
+    Task<Doctor> GetByCRM(string crm);
 }

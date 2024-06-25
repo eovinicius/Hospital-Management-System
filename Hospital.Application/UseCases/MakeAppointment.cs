@@ -1,4 +1,5 @@
 using Hospital.Application.Dtos.input;
+using Hospital.Domain.AbstractFactory;
 using Hospital.Domain.Entities;
 using Hospital.Domain.Repositories;
 using Hospital.Domain.Services;
@@ -12,12 +13,12 @@ public class MakeAppointment
     private readonly IDoctorRepository _doctorRepository;
     private readonly IMedicalInsuranceRepository _medicalInsuranceRepository;
 
-    public MakeAppointment(IAppointmentRespository appointmentRepository, IPatientRepository patientRepository, IDoctorRepository doctorRepository, IMedicalInsuranceRepository medicalInsuranceRepository)
+    public MakeAppointment(AbstractFactoryRepository factoryRepository)
     {
-        _appointmentRepository = appointmentRepository;
-        _patientRepository = patientRepository;
-        _doctorRepository = doctorRepository;
-        _medicalInsuranceRepository = medicalInsuranceRepository;
+        _appointmentRepository = factoryRepository.CreateAppointmentRepository();
+        _patientRepository = factoryRepository.CreatePatientRepository();
+        _doctorRepository = factoryRepository.CreateDoctorRepository();
+        _medicalInsuranceRepository = factoryRepository.CreateMedicalInsuranceRepository();
     }
 
     public async Task Execute(MakeAppointmentInput input)
