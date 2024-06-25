@@ -6,65 +6,39 @@ namespace Hospital.Domain.Entities;
 public class Appointment : AggregateRoot
 {
     public string Description { get; private set; }
+    public Guid SchedulingId { get; private set; }
     public Guid PatientId { get; private set; }
     public Guid DoctorId { get; private set; }
     public Guid? MedicalInsuranceId { get; private set; }
     public List<MedicalReport> MedicalReports { get; private set; }
     public Prescription? Prescription { get; private set; }
-    public AppointmentStatus Status { get; private set; }
 
-    public Appointment(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
+    public Appointment(string description, Guid schedulingId, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
     {
         Description = description;
+        SchedulingId = schedulingId;
         PatientId = patientId;
         MedicalInsuranceId = medicalInsuranceId;
         DoctorId = doctorId;
         MedicalReports = [];
-        Status = AppointmentStatus.Scheduled;
     }
 
-    public static Appointment Create(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
+    public static Appointment Create(string description, Guid schedulingId, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
     {
-        return new Appointment(description, patientId, doctorId, medicalInsuranceId);
+        return new Appointment(description, schedulingId, patientId, doctorId, medicalInsuranceId);
     }
 
     public void AddMedicalReport(string diagnosis, string treatment, string recommendations)
     {
-        if (Status != AppointmentStatus.Scheduled)
-        {
-            throw new InvalidOperationException("Cannot reschedule a finished or canceled appointment");
-        }
         MedicalReports.Add(new MedicalReport(diagnosis, treatment, recommendations));
     }
 
     public void AddPrescription(string medicine, string dosage, string duration)
     {
-        if (Status != AppointmentStatus.Scheduled)
-        {
-            throw new InvalidOperationException("Cannot reschedule a finished or canceled appointment");
-        }
         if (Prescription == null)
         {
             Prescription = new Prescription();
         }
         Prescription.AddPrescribedMedication(medicine, dosage, duration);
-    }
-
-    public void Finish()
-    {
-        if (Status == AppointmentStatus.Canceled)
-        {
-            throw new InvalidOperationException("Cannot finish a canceled appointment");
-        }
-        Status = AppointmentStatus.Finished;
-    }
-
-    public void Cancel()
-    {
-        if (Status == AppointmentStatus.Finished)
-        {
-            throw new InvalidOperationException("Cannot cancel a finished appointment");
-        }
-        Status = AppointmentStatus.Canceled;
     }
 }

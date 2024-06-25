@@ -31,6 +31,23 @@ public class Scheduling : AggregateRoot
     {
         return new Scheduling(date, priceWithDiscount, price, description, patientId, doctorId, medicalInsuranceId, typeScheduling);
     }
+    public void Finish()
+    {
+        if (Status == SchedulingStatus.Canceled)
+        {
+            throw new InvalidOperationException("Cannot finish a canceled appointment");
+        }
+        Status = SchedulingStatus.Finished;
+    }
+
+    public void Cancel()
+    {
+        if (Status == SchedulingStatus.Finished)
+        {
+            throw new InvalidOperationException("Cannot cancel a finished appointment");
+        }
+        Status = SchedulingStatus.Canceled;
+    }
 
     public void Reschedule(DateTime newDate)
     {
