@@ -13,6 +13,7 @@ public class Scheduling : AggregateRoot
     public Guid DoctorId { get; private set; }
     public Guid? MedicalInsuranceId { get; private set; }
     public TypeScheduling TypeScheduling { get; private set; }
+    public SchedulingStatus Status { get; private set; }
 
     public Scheduling(DateTime date, decimal priceWithDiscount, decimal price, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId, TypeScheduling typeScheduling)
     {
@@ -29,5 +30,22 @@ public class Scheduling : AggregateRoot
     public static Scheduling Create(DateTime date, decimal priceWithDiscount, decimal price, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId, TypeScheduling typeScheduling)
     {
         return new Scheduling(date, priceWithDiscount, price, description, patientId, doctorId, medicalInsuranceId, typeScheduling);
+    }
+
+    public void Reschedule(DateTime newDate)
+    {
+        if (Status == SchedulingStatus.Finished)
+        {
+            throw new InvalidOperationException("Cannot reschedule a finished appointment.");
+        }
+        if (newDate <= DateTime.Now)
+        {
+            throw new ArgumentException("Cannot reschedule to a past date.");
+        }
+        if (newDate <= Date.AddDays(-2))
+        {
+            throw new ArgumentException("Rescheduling must be done at least 48 hours in advance.");
+        }
+        Date = newDate;
     }
 }
