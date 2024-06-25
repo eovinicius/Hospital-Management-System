@@ -3,6 +3,7 @@ using Hospital.Domain.Shared;
 
 namespace Hospital.Domain.Repositories;
 
-public interface IPatientRepository :  IRepositoryGeneric<Patient>
+public interface IPatientRepository : IRepositoryGeneric<Patient>
 {
+    Task<Patient> GetByDocument(string document);
 }

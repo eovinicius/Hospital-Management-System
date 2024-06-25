@@ -16,22 +16,22 @@ public class Appointment : AggregateRoot
     public Prescription? Prescription { get; private set; }
     public AppointmentStatus Status { get; private set; }
 
-    public Appointment(DateTime date, decimal price, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
+    public Appointment(DateTime date, decimal price, decimal FinalPrince, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
     {
         Date = date;
         Price = price;
+        FinalPrice = FinalPrince;
         Description = description;
         PatientId = patientId;
         MedicalInsuranceId = medicalInsuranceId;
         DoctorId = doctorId;
         MedicalReports = [];
         Status = AppointmentStatus.Scheduled;
-
     }
 
-    public static Appointment Create(DateTime date, decimal price, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
+    public static Appointment Create(DateTime date, decimal price, decimal FinalPrice, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
     {
-        return new Appointment(date, price, description, patientId, doctorId, medicalInsuranceId);
+        return new Appointment(date, price, FinalPrice, description, patientId, doctorId, medicalInsuranceId);
     }
 
     public void AddMedicalReport(string diagnosis, string treatment, string recommendations)

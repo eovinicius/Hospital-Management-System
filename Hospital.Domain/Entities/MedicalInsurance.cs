@@ -7,7 +7,6 @@ public class MedicalInsurance : AggregateRoot
     public string Name { get; private set; }
     public string PolicyNumber { get; set; }
     public decimal Discount { get; set; }
-    
     public bool Active { get; private set; }
 
     public MedicalInsurance(string name, string policyNumber, bool active = true)

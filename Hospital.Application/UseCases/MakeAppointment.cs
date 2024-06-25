@@ -1,6 +1,7 @@
 using Hospital.Application.Dtos.input;
 using Hospital.Domain.Entities;
 using Hospital.Domain.Repositories;
+using Hospital.Domain.Services;
 
 namespace Hospital.Application.UseCases;
 
@@ -19,7 +20,7 @@ public class MakeAppointment
         _medicalInsuranceRepository = medicalInsuranceRepository;
     }
 
-    public async void Execute(MakeAppointmentInput input)
+    public async Task Execute(MakeAppointmentInput input)
     {
         var patient = await _patientRepository.GetById(input.PatientId);
         if (patient == null)
@@ -31,8 +32,9 @@ public class MakeAppointment
         {
             throw new Exception("Doctor not found");
         }
-
-        var appointment = Appointment.Create(input.Date, input.Price, input.Description, input.PatientId, input.DoctorId, patient.MedicalInsuranceId);
+        var medicalInsurance = await _medicalInsuranceRepository.GetById(patient.MedicalInsuranceId);
+        var priceWithDiscount = CalculateDiscount.Calculate(input.Price, medicalInsurance.Discount);
+        var appointment = Appointment.Create(input.Date, priceWithDiscount, input.Price, input.Description, input.PatientId, input.DoctorId, patient.MedicalInsuranceId);
         await _appointmentRepository.Add(appointment);
     }
 }
