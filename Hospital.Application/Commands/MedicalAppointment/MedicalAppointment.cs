@@ -1,10 +1,9 @@
-using Hospital.Application.Dtos.input;
 using Hospital.Application.Services;
 using Hospital.Domain.AbstractFactory;
 using Hospital.Domain.Entities;
 using Hospital.Domain.Repositories;
 
-namespace Hospital.Application.Commands;
+namespace Hospital.Application.Commands.MedicalAppointment;
 
 public class MedicalAppointment
 {
@@ -38,6 +37,8 @@ public class MedicalAppointment
             input.PatientId,
             input.DoctorId,
             patient.MedicalInsuranceId);
+
+        appointment.AddMedicalReport();
         await _appointmentRepository.Add(appointment);
         await _uow.Commit();
     }

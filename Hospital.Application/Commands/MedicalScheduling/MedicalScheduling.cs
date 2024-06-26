@@ -24,7 +24,7 @@ public class MedicalScheduling
         _uow = uow;
     }
 
-    public async Task Execute(MedicalSchedulingInput input)
+    public async Task Execute(Dtos.input.MedicalScheduling input)
     {
         var patient = await _patientRepository.GetById(input.PatientId);
         if (patient == null)

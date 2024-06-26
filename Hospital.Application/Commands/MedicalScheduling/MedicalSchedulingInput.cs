@@ -2,7 +2,7 @@ using Hospital.Domain.Enums;
 
 namespace Hospital.Application.Dtos.input;
 
-public record MedicalSchedulingInput(
+public record MedicalScheduling(
     DateTime Date,
     decimal Price,
     string Description,

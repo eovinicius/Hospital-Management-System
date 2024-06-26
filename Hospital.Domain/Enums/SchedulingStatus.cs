@@ -4,5 +4,5 @@ public enum SchedulingStatus
 {
     Scheduled,
     Canceled,
-    Finished
+    Finished,
 }

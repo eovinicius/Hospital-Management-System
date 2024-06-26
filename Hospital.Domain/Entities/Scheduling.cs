@@ -25,6 +25,7 @@ public class Scheduling : AggregateRoot
         DoctorId = doctorId;
         MedicalInsuranceId = medicalInsuranceId;
         TypeScheduling = typeScheduling;
+        Status = SchedulingStatus.Scheduled;
     }
 
     public static Scheduling Create(DateTime date, decimal priceWithDiscount, decimal price, string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId, TypeScheduling typeScheduling)
