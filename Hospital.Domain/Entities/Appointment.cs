@@ -1,4 +1,3 @@
-using Hospital.Domain.Enums;
 using Hospital.Domain.Shared;
 
 namespace Hospital.Domain.Entities;
@@ -13,19 +12,18 @@ public class Appointment : AggregateRoot
     public List<MedicalReport> MedicalReports { get; private set; }
     public Prescription? Prescription { get; private set; }
 
-    public Appointment(string description, Guid schedulingId, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
+    public Appointment(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
     {
         Description = description;
-        SchedulingId = schedulingId;
         PatientId = patientId;
         MedicalInsuranceId = medicalInsuranceId;
         DoctorId = doctorId;
         MedicalReports = [];
     }
 
-    public static Appointment Create(string description, Guid schedulingId, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
+    public static Appointment Create(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
     {
-        return new Appointment(description, schedulingId, patientId, doctorId, medicalInsuranceId);
+        return new Appointment(description, patientId, doctorId, medicalInsuranceId);
     }
 
     public void AddMedicalReport(string diagnosis, string treatment, string recommendations)

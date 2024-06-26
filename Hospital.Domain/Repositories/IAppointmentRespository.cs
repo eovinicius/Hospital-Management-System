@@ -5,5 +5,4 @@ namespace Hospital.Domain.Repositories;
 
 public interface IAppointmentRespository : IRepositoryGeneric<Appointment>
 {
-    Task<bool> IsDoctorAvailable(Guid doctorId, DateTime date);
 }
