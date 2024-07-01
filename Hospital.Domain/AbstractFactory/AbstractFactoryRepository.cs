@@ -7,6 +7,6 @@ public interface AbstractFactoryRepository
     IDoctorRepository CreateDoctorRepository();
     IPatientRepository CreatePatientRepository();
     IAppointmentRespository CreateAppointmentRepository();
-    IMedicalInsuranceRepository CreateMedicalInsuranceRepository();
+    IInsurancePlanRepository CreateInsurancePlanRepository();
     ISchedulingRepository CreateSchedulingRepository();
 }

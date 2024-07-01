@@ -1,12 +1,10 @@
 using Hospital.Domain.Enums;
 
-namespace Hospital.Application.Dtos.input;
+namespace Hospital.Application.Commands.RegisterDoctor;
 
 public record RegisterDoctorInput(
     string Name,
-    string CRM,
-    Specialty Specialty,
-    string Email,
-    string Phone,
-    string Password,
-    string ConfirmPassword);
+    string Crm,
+    Stream CrmImage,
+    List<Specialty> Specialty
+);

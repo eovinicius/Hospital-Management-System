@@ -1,10 +1,8 @@
-namespace Hospital.Application.Dtos.input;
+namespace Hospital.Application.Commands.RegisterPatient;
 
 public record RegisterPatientInput(
     string Name,
     string Document,
-    string DocumentImage,
-    string Email,
-    string Phone,
+    Stream DocumentImage,
     string Address,
-    Guid? MedicalInsuranceId = null);
+    Guid? InsurancePlainId = null);

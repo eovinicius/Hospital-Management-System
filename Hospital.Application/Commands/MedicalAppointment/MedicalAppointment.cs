@@ -12,33 +12,31 @@ public class MedicalAppointment
     private readonly IAppointmentRespository _appointmentRepository;
     private readonly IUnitOfWork _uow;
 
-    public MedicalAppointment(AbstractFactoryRepository factoryRepository, IUnitOfWork uow)
+    public MedicalAppointment(AbstractFactoryRepository factory, IUnitOfWork uow)
     {
-        _appointmentRepository = factoryRepository.CreateAppointmentRepository();
-        _patientRepository = factoryRepository.CreatePatientRepository();
-        _doctorRepository = factoryRepository.CreateDoctorRepository();
+        _appointmentRepository = factory.CreateAppointmentRepository();
+        _patientRepository = factory.CreatePatientRepository();
+        _doctorRepository = factory.CreateDoctorRepository();
         _uow = uow;
     }
 
     public async Task Execute(MedicalAppointmentInput input)
     {
-        var patient = await _patientRepository.GetById(input.PatientId);
+        var patient = await _patientRepository.FindById(input.PatientId);
         if (patient == null)
         {
             throw new Exception("Patient not found");
         }
-        var doctor = await _doctorRepository.GetById(input.DoctorId);
+        var doctor = await _doctorRepository.FindById(input.DoctorId);
         if (doctor == null)
         {
             throw new Exception("Doctor not found");
         }
-        var appointment = Appointment.Create(
-            input.Description,
-            input.PatientId,
-            input.DoctorId,
-            patient.MedicalInsuranceId);
-
-        appointment.AddMedicalReport();
+        var appointment = Appointment.Create(input.Description, input.PatientId, input.DoctorId, patient.InsurancePlanId);
+        foreach (var medicalReport in input.MedicalReportInputs)
+        {
+            appointment.AddMedicalReport(medicalReport.Diagnosis, medicalReport.Treatment, medicalReport.Recommendations);
+        }
         await _appointmentRepository.Add(appointment);
         await _uow.Commit();
     }

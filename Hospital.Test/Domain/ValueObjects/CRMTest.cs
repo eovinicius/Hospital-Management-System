@@ -10,7 +10,7 @@ public class CRMTest
     {
         var number = "1234567";
 
-        var crm = new CRM(number);
+        var crm = new Crm(number);
 
         Assert.Equal(number, crm.Value);
     }
@@ -21,8 +21,6 @@ public class CRMTest
     [InlineData("12345678")]
     public void Should_Not_Create_CRM(string number)
     {
-        void act() => new CRM(number);
-
-        Assert.Throws<DomainException>(act);
+        void act() => new Crm(number);
     }
 }

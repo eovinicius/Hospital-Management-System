@@ -1,8 +1,8 @@
 namespace Hospital.Domain.Enums;
 
-public enum TypeScheduling
+public enum SchedulingType
 {
     Consultation,
     Exam,
-    Surgery
+    Return
 }

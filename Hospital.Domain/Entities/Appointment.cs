@@ -5,20 +5,20 @@ namespace Hospital.Domain.Entities;
 public class Appointment : AggregateRoot
 {
     public string Description { get; private set; }
-    public Guid SchedulingId { get; private set; }
     public Guid PatientId { get; private set; }
     public Guid DoctorId { get; private set; }
-    public Guid? MedicalInsuranceId { get; private set; }
-    public List<MedicalReport> MedicalReports { get; private set; }
-    public Prescription? Prescription { get; private set; }
+    public Guid? InsurancePlanId { get; private set; }
+    public List<Report> Reports { get; private set; }
+    public List<Medicine> Medicines { get; private set; }
 
-    public Appointment(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId = null)
+    public Appointment(string description, Guid patientId, Guid doctorId, Guid? insurancePlanId = null)
     {
         Description = description;
         PatientId = patientId;
-        MedicalInsuranceId = medicalInsuranceId;
+        InsurancePlanId = insurancePlanId;
         DoctorId = doctorId;
-        MedicalReports = [];
+        Reports = [];
+        Medicines = [];
     }
 
     public static Appointment Create(string description, Guid patientId, Guid doctorId, Guid? medicalInsuranceId)
@@ -26,17 +26,15 @@ public class Appointment : AggregateRoot
         return new Appointment(description, patientId, doctorId, medicalInsuranceId);
     }
 
-    public void AddMedicalReport(string diagnosis, string treatment, string recommendations)
+    public void AddReport(string diagnosis, string treatment, string recommendations)
     {
-        MedicalReports.Add(new MedicalReport(diagnosis, treatment, recommendations));
+        var report = Report.Create(diagnosis, treatment, recommendations);
+        Reports.Add(report);
     }
 
-    public void AddPrescription(string medicine, string dosage, string duration)
+    public void AddMedicine(string name, string dosage, string frequency, string duration)
     {
-        if (Prescription == null)
-        {
-            Prescription = new Prescription();
-        }
-        Prescription.AddPrescribedMedication(medicine, dosage, duration);
+        var medicine = Medicine.Create(name, dosage, frequency, duration);
+        Medicines.Add(medicine);
     }
 }

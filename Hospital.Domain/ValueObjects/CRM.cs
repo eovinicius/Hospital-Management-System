@@ -4,11 +4,11 @@ using Hospital.Domain.Shared;
 
 namespace Hospital.Domain.ValueObjects;
 
-public class CRM : ValueObject
+public class Crm : ValueObject
 {
     public string Value { get; private set; }
 
-    public CRM(string value)
+    public Crm(string value)
     {
         Value = value;
 
@@ -23,7 +23,7 @@ public class CRM : ValueObject
         }
     }
 
-    public string Format()
+    public override string ToString()
     {
         return $"{Value.Substring(0, 2)}.{Value.Substring(2, 3)}.{Value.Substring(5)}";
     }
